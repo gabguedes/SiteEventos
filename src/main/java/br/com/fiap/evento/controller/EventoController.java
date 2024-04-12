@@ -1,5 +1,6 @@
 package br.com.fiap.evento.controller;
 
+import br.com.fiap.evento.model.Cidade;
 import br.com.fiap.evento.model.Evento;
 import br.com.fiap.evento.service.CidadeService;
 import br.com.fiap.evento.service.EventoService;
@@ -22,6 +23,9 @@ public class EventoController {
 
     @Autowired
     private CidadeService cidadeService;
+
+    @ModelAttribute("cidades")
+    public List<Cidade> cidades(){return cidadeService.findAll();}
 
     
     @GetMapping("form")
@@ -47,7 +51,7 @@ public class EventoController {
     public String findAll(Model model){
         List<Evento> eventos = service.findAll();
         model.addAttribute("eventos", eventos);
-        return "evento/listar-evento";
+        return "evento/listar-eventos";
     }
 
     @GetMapping("/{id}")

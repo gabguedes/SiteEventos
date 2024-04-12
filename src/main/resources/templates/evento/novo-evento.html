@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{template.html}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Novo Evento</title>
+</head>
+
+<body>
+
+<div layout:fragment="conteudo">
+
+    <div class="dark-bg max-height">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 mt-5">
+                    <div class="p-4 rounded shadow bg-body-tertiary ">
+                        <h1>Novo Evento</h1>
+                        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <span th:text="${mensagem}"></span>
+                        </div>
+                        <form action="#" th:action="@{/eventos}" th:object="${evento}"
+                              method="post">
+
+                            <label for="nome">Nome:</label>
+                            <input class="form-control mb-3" type="text" name="nome" id="nome"
+                                   placeholder="Nome do evento" th:field="*{nome}">
+                            <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+                            <label for="data">Data:</label>
+                            <input class="form-control mb-3" type="date" name="data" id="data" th:field="*{data}">
+                            <span class="mensagem" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+
+                            <label for="cidade">Cidade:</label>
+                            <select class="chosen-select form-control mb-3" data-placehold="cidade"
+                                    name="cidade" id="cidade" th:field="*{cidade}">
+                                <option th:each="cidade : ${cidades}"
+                                        th:text="${cidade.nome}"
+                                        th:value="${cidade.id}">
+                                </option>
+                            </select>
+                            <span class="mensagem" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+
+                            <label for="url">URL:</label>
+                            <input class="form-control mb-3" type="text" name="url" id="url" th:field="*{url}">
+                            <span class="mensagem" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+
+                            <div>
+                                <input class="btn btn-lg btn-success" type="submit" value="Cadastrar">
+                                <input class="btn btn-lg btn-danger" type="reset" value="Limpar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
