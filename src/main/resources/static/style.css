@@ -10,3 +10,17 @@
  .mensagem {
           color: red;
  }
+
+.bg-img {
+    background-image: url("./images/background.jpg");
+    background-blend-mode: darken;
+    background-position: center;
+    background-color: rgba(0, 0, 0, .65);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+ }
+ .blur{
+    backdrop-filter: blur(4px);
+ }

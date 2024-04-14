@@ -17,6 +17,7 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4 mt-5">
+
                     <div class="p-4 rounded shadow bg-body-tertiary ">
                         <h1>Novo Evento</h1>
                         <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
@@ -27,15 +28,17 @@
                               method="post">
 
                             <label for="nome">Nome:</label>
+                            <br>
+                            <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                             <input class="form-control mb-3" type="text" name="nome" id="nome"
                                    placeholder="Nome do evento" th:field="*{nome}">
-                            <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 
-                            <label for="data">Data:</label>
-                            <input class="form-control mb-3" type="date" name="data" id="data" th:field="*{data}">
+                            <label for="data">Data:</label><br>
                             <span class="mensagem" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+                            <input class="form-control mb-3" type="date" name="data" id="data" th:field="*{data}">
 
-                            <label for="cidade">Cidade:</label>
+                            <label for="cidade">Cidade:</label><br>
+                            <span class="mensagem" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
                             <select class="chosen-select form-control mb-3" data-placehold="cidade"
                                     name="cidade" id="cidade" th:field="*{cidade}">
                                 <option th:each="cidade : ${cidades}"
@@ -43,11 +46,10 @@
                                         th:value="${cidade.id}">
                                 </option>
                             </select>
-                            <span class="mensagem" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
 
-                            <label for="url">URL:</label>
-                            <input class="form-control mb-3" type="text" name="url" id="url" th:field="*{url}">
+                            <label for="url">URL:</label><br>
                             <span class="mensagem" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                            <input class="form-control mb-3" type="text" name="url" id="url" th:field="*{url}">
 
                             <div>
                                 <input class="btn btn-lg btn-success" type="submit" value="Cadastrar">

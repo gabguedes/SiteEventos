@@ -14,6 +14,12 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <div class="mt-5"></div>
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}" data-bs-theme="dark">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+
+                        <span th:text="${mensagem}"></span>
+                    </div>
                     <h1 class="h1 text-light">Lista de Eventos</h1>
                     <table class="table table-striped" data-bs-theme="dark">
                         <thead>
@@ -30,8 +36,8 @@
                             </tr>
                             <tr th:each="evento : ${eventos}">
                                 <td><span th:text="${evento.nome}"> Nome </span></td>
-<!--                                <td><span th:text="${#dates.format(evento.data, 'dd/MM/yyyy')}"> Data </span></td>-->
-                                <td><span th:text="${evento.data}"> Data </span></td>
+                                <td><span th:text="${#dates.format(evento.data, 'dd/MM/yyyy')}"> Data </span></td>
+<!--                                <td><span th:text="${evento.data}"> Data </span></td>-->
                                 <td><span th:text="${evento.url}"> URL </span></td>
                                 <td><span th:text="${evento.cidade.nome}"> Cidade </span></td>
                                 <td>
